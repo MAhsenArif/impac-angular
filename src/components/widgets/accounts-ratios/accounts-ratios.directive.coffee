@@ -57,7 +57,7 @@ module.controller('WidgetAccountsRatiosCtrl', ($scope, $q, $filter, $translate, 
       $scope.periodInfoContext.histParams = w.metadata.hist_parameters
       $scope.periodInfoContext.accountingBehaviour = behaviour
       getPrefix(behaviour).then((label)-> $scope.periodInfoContext.injectBefore = label)
-      $scope.allowXAxisLegend = !_.includes(['accounts/ratios/current', 'accounts/ratios/debt_service'], w.endpoint)
+      $scope.allowXAxisLegend = ['accounts/ratios/current', 'accounts/ratios/debt_service'].indexOf(w.endpoint) == -1
 
       if behaviour == 'pnl'
         $scope.totalRatio = w.content.calculation.ratio.average
